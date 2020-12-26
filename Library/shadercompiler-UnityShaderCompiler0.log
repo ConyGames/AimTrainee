@@ -1,2 +1,2 @@
-Base path: '/mnt/sda2/software/unity/2020.1.4f1/Editor/Data', plugins path ''
+Base path: '/mnt/sda2/software/unity/2020.1.4f1/Editor/Data', plugins path '/mnt/sda2/software/unity/2020.1.4f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler

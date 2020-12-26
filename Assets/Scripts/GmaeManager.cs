@@ -9,16 +9,17 @@ public class GmaeManager : MonoBehaviour
 
     [Header("Game Objects")]
     [SerializeField] private GameObject PauseMenu;
-    [SerializeField] private GameObject SettignsMenu;
+    [SerializeField] private GameObject SettingsMenu;
 
     [Header("Scripts")]
     [SerializeField] private PlayerLook playerLook;
     [SerializeField] private BulletFire bulletFire;
     [SerializeField] private LaunchObstacle launchObstacles;
-    [SerializeField] private PlayerMovement playerMovemnt;
+    [SerializeField] private PlayerMovement playerMovement;
 
     [Header("Settings Variables")]
-        public Slider obtacleDelaySlider;
+        public Slider obstacleDelaySlider;
+        public Slider MouseSensitivitySlider;
         public Toggle SlowOnJump;
 
     [Header("ScoreManager")]
@@ -32,10 +33,10 @@ public class GmaeManager : MonoBehaviour
     {
         PauseMenu = GameObject.Find("PauseMenu");
         PauseMenu.SetActive(false);
-        SettignsMenu.SetActive(false);
+        SettingsMenu.SetActive(false);
         audioHighPassFilter = gameObject.GetComponent<AudioHighPassFilter>();
         audioHighPassFilter.cutoffFrequency = 10;
-        obtacleDelaySlider.SetValueWithoutNotify(0.7f);
+        obstacleDelaySlider.SetValueWithoutNotify(0.7f);
         hitCountText.text = "0";
     }
 
@@ -52,14 +53,14 @@ public class GmaeManager : MonoBehaviour
     // Method to launch the settings Panel
     public void Settings(){
         PauseMenu.SetActive(false);
-        SettignsMenu.SetActive(true);
+        SettingsMenu.SetActive(true);
         SettingsMenuOn = true;
     }
 
     // Settings Menu back Button
     public void SettingsMenuBack(){
         PauseMenu.SetActive(true);
-        SettignsMenu.SetActive(false);
+        SettingsMenu.SetActive(false);
         SettingsMenuOn = false;
     }
 
@@ -74,11 +75,11 @@ public class GmaeManager : MonoBehaviour
     }
 
      public void ObstacleSpeedChange(){
-        launchObstacles.launchDelay = obtacleDelaySlider.value;
+        launchObstacles.launchDelay = obstacleDelaySlider.value;
     }
 
     public void SlowOnJumpToggle(){
-        playerMovemnt.SlowOnJump = this.SlowOnJump.isOn;
+        playerMovement.SlowOnJump = this.SlowOnJump.isOn;
     }
 
     private void Update()
@@ -114,5 +115,9 @@ public class GmaeManager : MonoBehaviour
     public void IncreaseScore(){
         PlayerScore++;
         hitCountText.text = PlayerScore.ToString();
+    }
+
+    public void ChangeMouseSensitivity(){
+        playerLook.MouseSensitivity = MouseSensitivitySlider.value;
     }
 }

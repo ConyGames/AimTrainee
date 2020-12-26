@@ -8,7 +8,7 @@ public class PlayerLook : MonoBehaviour
     private Vector2 temp = new Vector2();
     private GameObject LocalPlayer;
 
-    public float MouseSencivity = 1;
+    public float MouseSensitivity = 1;
     
     void Start()
     {
@@ -28,8 +28,8 @@ public class PlayerLook : MonoBehaviour
 
     private void GetMouseMovement(){
         MouseMovement = Camera.main.transform.eulerAngles;
-        MouseMovement.y += Input.GetAxis("Mouse X") * MouseSencivity;
-        MouseMovement.x -= Input.GetAxis("Mouse Y") * MouseSencivity;
+        MouseMovement.y += Input.GetAxis("Mouse X") * MouseSensitivity;
+        MouseMovement.x -= Input.GetAxis("Mouse Y") * MouseSensitivity;
     }
 
     private void SetLocalPlayerRotation(){
